@@ -1,0 +1,47 @@
+%2a
+x=(0:5)';
+x=x/5+1;
+f=cos(x);
+A=[x.^5, x.^4, x.^3, x.^2, x, ones(6,1)];
+[L, U, P]=lu(A);
+opts.LT=true;
+opts.TRANSA=false;
+opts.UT=false;
+b=linsolve(L, P*f, opts);
+opts.LT=false;
+opts.UT=true;
+opts.TRANSA=false;
+c=linsolve(U, b, opts);
+cc=polyfit(x, f, 5);
+t = linspace(1,2);
+%plot(t, polyval(c, t), t, cos(t));
+
+%2b
+A=[x.^3, x.^2, x, ones(6,1)];
+[Q,R]=qr(A,0);
+c=R\(Q'*f);
+[Q,R,P] = qr(A,0);
+c(P) = R\(Q'*f);
+[U, S, V]=svd(A, 'econ');
+c=V*(S\(U'*f));
+disp(c)
+t = linspace(1,2);
+%plot(t, polyval(c, t), t, cos(t));
+
+%2c
+B=[x.^3, x.^2, x, x.^2+x, ones(6,1)];
+[Q,R,P] = qr(B);
+c = P(:, 1:4)*R(1:4,1:4)^(-1)*Q(:, 1:4)'*f;
+disp(c)
+t = linspace(1,2);
+plot(t, polyval([c(1),c(2)+c(4),c(3)+c(4),c(5)], t), t, cos(t));
+
+%2d
+M=10^3; C=A'*A;
+EIG=sort(eig(C));
+for con=1:M
+    [Q, R]=qr(C, 0);
+    C=R*Q; 
+end
+mesh(C);
+EIG1=sort(diag(C));
