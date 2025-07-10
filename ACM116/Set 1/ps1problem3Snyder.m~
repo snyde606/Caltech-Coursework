@@ -1,0 +1,8 @@
+expvals=[];
+
+for k=1:3
+  data = binornd(100, 0.3);
+  mn = mean(data);
+  
+end
+
