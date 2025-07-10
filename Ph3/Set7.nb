@@ -1,0 +1,412 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14850,        404]
+NotebookOptionsPosition[     12268,        348]
+NotebookOutlinePosition[     12680,        366]
+CellTagsIndexPosition[     12637,        363]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Ph3 Set 7", "Title",
+ CellChangeTimes->{{3.7633196338061743`*^9, 3.7633196412260313`*^9}, {
+  3.763319677962234*^9, 3.76331969488805*^9}, {3.763390525297209*^9, 
+  3.7633905273131027`*^9}, {3.766420336319192*^9, 3.7664203364211817`*^9}, {
+  3.7670259506696*^9, 3.7670259507601423`*^9}, {3.767553678722352*^9, 
+  3.767553678831553*^9}},ExpressionUUID->"4236105a-9129-4b75-b2fe-\
+6129354bdd94"],
+
+Cell["Jacob Snyder", "Subtitle",
+ CellChangeTimes->{{3.763319706631587*^9, 
+  3.763319709567474*^9}},ExpressionUUID->"4ff873c5-24b2-4702-a55e-\
+900b779fc005"],
+
+Cell["5/22/19", "Subtitle",
+ CellChangeTimes->{{3.7633197319267178`*^9, 3.763319746341798*^9}, {
+  3.7633905316730022`*^9, 3.763390531713006*^9}, {3.7664203385344963`*^9, 
+  3.766420340477297*^9}, {3.76696399354687*^9, 3.766963993701498*^9}, {
+  3.7675536812558737`*^9, 
+  3.767553681951716*^9}},ExpressionUUID->"d789870e-65ce-46f0-818f-\
+7d41b5ed6bda"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"N", "@", 
+    RowBox[{"CDF", "[", 
+     RowBox[{
+      RowBox[{"NormalDistribution", "[", 
+       RowBox[{"0", ",", "1"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "1", ",", "1.01", ",", "1.02", ",", "1.03", ",", "1.04", ",", "1.05", 
+        ",", "1.06", ",", "1.07", ",", "1.08", ",", "1.09"}], "}"}]}], 
+     "]"}]}], "*", "2"}], "-", "1"}]], "Input",
+ CellChangeTimes->{{3.7675537546110783`*^9, 3.76755375629924*^9}, {
+  3.767553791549614*^9, 
+  3.767553866033655*^9}},ExpressionUUID->"b2e2fc60-7232-46c1-aadb-\
+ad84b32e478a"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.6826894921370859`", ",", "0.6875047099574909`", ",", 
+   "0.6922715392545302`", ",", "0.6969899944233127`", ",", 
+   "0.7016600993380371`", ",", "0.7062818872482082`", ",", 
+   "0.7108554006721808`", ",", "0.7153806912881215`", ",", 
+   "0.7198578198224619`", ",", "0.724286855935929`"}], "}"}]], "Output",
+ CellChangeTimes->{{3.7675537977905188`*^9, 3.767553835165872*^9}, 
+   3.767553866349744*^9},ExpressionUUID->"2daa26d3-8733-4ae1-b2de-\
+dc99af78d5f0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"N", "@", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"CDF", "[", 
+       RowBox[{
+        RowBox[{"NormalDistribution", "[", 
+         RowBox[{"0", ",", "1"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+         "0.5", ",", "0.51", ",", "0.52", ",", "0.53", ",", "0.54", ",", 
+          "0.55", ",", "0.56", ",", "0.57", ",", "0.58", ",", "0.59"}], 
+         "}"}]}], "]"}], "*", "2"}], "-", "1"}], ")"}]}], "/", "2"}]], "Input",\
+
+ CellChangeTimes->{{3.767553892978053*^9, 3.76755389336132*^9}, {
+  3.7675539243375874`*^9, 
+  3.76755398150951*^9}},ExpressionUUID->"d3237cd5-8a81-4b1b-a58f-\
+f3f0274b1dc7"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.19146246127401312`", ",", "0.1949742691024806`", ",", 
+   "0.1984682124530338`", ",", "0.20194403460512356`", ",", 
+   "0.2054014837843019`", ",", "0.20884031321165364`", ",", 
+   "0.21226028115097306`", ",", "0.21566115095367577`", ",", 
+   "0.2190426911014356`", ",", "0.22240467524653507`"}], "}"}]], "Output",
+ CellChangeTimes->{3.767553894069343*^9, 3.767553930910234*^9, 
+  3.767553982428149*^9},ExpressionUUID->"168ea7b6-aeb4-40f4-be9d-\
+9f8d545dd66f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PearsonCorrelationTest", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "8", ",", "5", ",", "6", ",", "3"}], "}"}], ",", 
+   "\"\<TestDataTable\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.767554050464128*^9, 3.76755405960585*^9}, {
+  3.767554106756538*^9, 
+  3.767554115274309*^9}},ExpressionUUID->"5f59c29f-7bbb-4fd7-a205-\
+655d7ae4cc47"],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"\"\>", "\<\"Statistic\"\>", "\<\"P\[Hyphen]Value\"\>"},
+     {"\<\"Pearson Correlation\"\>", 
+      RowBox[{"-", "0.8944271909999159`"}], "0.04051932635383402`"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Automatic}}},
+    GridBoxDividers->{
+     "ColumnsIndexed" -> {2 -> GrayLevel[0.7]}, 
+      "RowsIndexed" -> {2 -> GrayLevel[0.7]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+   "Grid"], "DialogStyle",
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{
+  3.7675541281358747`*^9},ExpressionUUID->"0a6fe708-01ff-4e20-ae18-\
+61d8d33a9798"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PearsonCorrelationTest", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "8", ",", "5", ",", "6", ",", "3"}], "}"}], ",", 
+   "\"\<TestConclusion\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.767554062615793*^9, 3.767554062838086*^9}, 
+   3.767554122755937*^9},ExpressionUUID->"7587a5f9-0cb4-438f-867d-\
+8174ba0e92d9"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "\"The null hypothesis that \"",
+   TemplateBox[{"\"the populations are independent \""}, "RowDefault"],
+   "\"is rejected at the \"",
+   TemplateBox[{"5", "\" percent level \""}, "RowDefault"],
+   TemplateBox[{"\"based on the \"", "\"Pearson Correlation\"", "\" test.\""},
+     "RowDefault"]},
+  "RowDefault"]], "Output",
+ CellChangeTimes->{
+  3.7675541296972218`*^9},ExpressionUUID->"fea0cd95-7d6e-49f6-8862-\
+a5b3078b8f87"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PearsonCorrelationTest", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "8", ",", "5", ",", "6", ",", "3"}], "}"}], ",", 
+   "\"\<TestConclusion\>\"", ",", 
+   RowBox[{"SignificanceLevel", "\[Rule]", "0.01"}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.767554127114835*^9},ExpressionUUID->"b5053940-5eab-49b5-bc55-\
+861de47a477a"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "\"The null hypothesis that \"",
+   TemplateBox[{"\"the populations are independent \""}, "RowDefault"],
+   "\"is not rejected at the \"",
+   TemplateBox[{"1.`", "\" percent level \""}, "RowDefault"],
+   TemplateBox[{"\"based on the \"", "\"Pearson Correlation\"", "\" test.\""},
+     "RowDefault"]},
+  "RowDefault"]], "Output",
+ CellChangeTimes->{
+  3.767554131678381*^9},ExpressionUUID->"c4e12bca-2934-4d2c-b6b4-\
+cb9cf8be2e95"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PearsonCorrelationTest", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "6", ",", "3", ",", "0", ",", "2"}], "}"}], ",", 
+   "\"\<TestDataTable\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.767554050464128*^9, 3.76755405960585*^9}, {
+  3.767554106756538*^9, 3.767554115274309*^9}, {3.767554146259025*^9, 
+  3.7675541483451843`*^9}},ExpressionUUID->"5dcf7492-6071-4b48-a166-\
+151ad085575b"],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"\"\>", "\<\"Statistic\"\>", "\<\"P\[Hyphen]Value\"\>"},
+     {"\<\"Pearson Correlation\"\>", 
+      RowBox[{"-", "0.7071067811865475`"}], "0.1816901138162094`"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Automatic}}},
+    GridBoxDividers->{
+     "ColumnsIndexed" -> {2 -> GrayLevel[0.7]}, 
+      "RowsIndexed" -> {2 -> GrayLevel[0.7]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+   "Grid"], "DialogStyle",
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{{3.7675541281358747`*^9, 
+  3.767554152353426*^9}},ExpressionUUID->"e2a0847c-c87c-4f46-af70-\
+909454134378"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PearsonCorrelationTest", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "6", ",", "3", ",", "0", ",", "2"}], "}"}], ",", 
+   "\"\<TestConclusion\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.767554062615793*^9, 3.767554062838086*^9}, 
+   3.767554122755937*^9, 
+   3.7675541574993773`*^9},ExpressionUUID->"81f79a09-1260-4d3d-858c-\
+54ed0a9c2a89"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "\"The null hypothesis that \"",
+   TemplateBox[{"\"the populations are independent \""}, "RowDefault"],
+   "\"is not rejected at the \"",
+   TemplateBox[{"5", "\" percent level \""}, "RowDefault"],
+   TemplateBox[{"\"based on the \"", "\"Pearson Correlation\"", "\" test.\""},
+     "RowDefault"]},
+  "RowDefault"]], "Output",
+ CellChangeTimes->{{3.7675541296972218`*^9, 
+  3.767554157920636*^9}},ExpressionUUID->"d10f2c4f-da44-4f96-9a01-\
+9e492635ad46"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PearsonCorrelationTest", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "6", ",", "3", ",", "0", ",", "2"}], "}"}], ",", 
+   "\"\<TestConclusion\>\"", ",", 
+   RowBox[{"SignificanceLevel", "\[Rule]", "0.01"}]}], "]"}]], "Input",
+ CellChangeTimes->{3.767554127114835*^9, 
+  3.767554160171172*^9},ExpressionUUID->"42f6f9ad-771c-4bb8-937f-\
+4dc38774fc80"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "\"The null hypothesis that \"",
+   TemplateBox[{"\"the populations are independent \""}, "RowDefault"],
+   "\"is not rejected at the \"",
+   TemplateBox[{"1.`", "\" percent level \""}, "RowDefault"],
+   TemplateBox[{"\"based on the \"", "\"Pearson Correlation\"", "\" test.\""},
+     "RowDefault"]},
+  "RowDefault"]], "Output",
+ CellChangeTimes->{{3.767554131678381*^9, 
+  3.767554160512521*^9}},ExpressionUUID->"a6c82ca7-dfa9-43c8-ad5d-\
+9640c3ae7477"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"IndependenceTest", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "8", ",", "5", ",", "6", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\"\<TestDataTable\>\"", ",", "All"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7675541857994013`*^9, 
+  3.7675541858110857`*^9}},ExpressionUUID->"f0e82e01-f77e-4a37-8dc3-\
+49dab937fa10"],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"\"\>", "\<\"Statistic\"\>", "\<\"P\[Hyphen]Value\"\>"},
+     {"\<\"Blomqvist \[Beta]\"\>", 
+      RowBox[{"-", "0.75`"}], "0.3333333333333335`"},
+     {"\<\"Goodman\[Hyphen]Kruskal \[Gamma]\"\>", 
+      RowBox[{"-", "0.7777777777777778`"}], "0.14164469029513682`"},
+     {"\<\"Hoeffding \[ScriptCapitalD]\"\>", 
+      RowBox[{"-", "0.375`"}], "0.9643619175075702`"},
+     {"\<\"Kendall \[Tau]\"\>", 
+      RowBox[{"-", "0.737864787372622`"}], "0.07697417298126674`"},
+     {"\<\"Pearson Correlation\"\>", 
+      RowBox[{"-", "0.8944271909999159`"}], "0.04051932635383402`"},
+     {"\<\"Pillai Trace\"\>", "0.8000000000000002`", "0.04550026389635838`"},
+     {"\<\"Spearman Rank\"\>", 
+      RowBox[{"-", "0.872081599272381`"}], "0.053854217727542036`"},
+     {"\<\"Wilks \[ScriptCapitalW]\"\>", "0.7999999999999999`", 
+      "0.004557430139484846`"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Automatic}}},
+    GridBoxDividers->{
+     "ColumnsIndexed" -> {2 -> GrayLevel[0.7]}, 
+      "RowsIndexed" -> {2 -> GrayLevel[0.7]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+   "Grid"], "DialogStyle",
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{
+  3.76755418702429*^9},ExpressionUUID->"296d41f7-b2c9-4e9d-a494-e10bb8d536f4"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 683},
+WindowMargins->{{Automatic, 5}, {Automatic, 41}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+FrontEndVersion->"11.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 398, 6, 98, "Title",ExpressionUUID->"4236105a-9129-4b75-b2fe-6129354bdd94"],
+Cell[981, 30, 158, 3, 53, "Subtitle",ExpressionUUID->"4ff873c5-24b2-4702-a55e-900b779fc005"],
+Cell[1142, 35, 353, 6, 53, "Subtitle",ExpressionUUID->"d789870e-65ce-46f0-818f-7d41b5ed6bda"],
+Cell[CellGroupData[{
+Cell[1520, 45, 592, 16, 52, "Input",ExpressionUUID->"b2e2fc60-7232-46c1-aadb-ad84b32e478a"],
+Cell[2115, 63, 502, 10, 56, "Output",ExpressionUUID->"2daa26d3-8733-4ae1-b2de-dc99af78d5f0"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2654, 78, 666, 19, 73, "Input",ExpressionUUID->"d3237cd5-8a81-4b1b-a58f-f3f0274b1dc7"],
+Cell[3323, 99, 504, 10, 56, "Output",ExpressionUUID->"168ea7b6-aeb4-40f4-be9d-9f8d545dd66f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3864, 114, 464, 11, 30, "Input",ExpressionUUID->"5f59c29f-7bbb-4fd7-a205-655d7ae4cc47"],
+Cell[4331, 127, 756, 18, 45, "Output",ExpressionUUID->"0a6fe708-01ff-4e20-ae18-61d8d33a9798"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5124, 150, 440, 10, 30, "Input",ExpressionUUID->"7587a5f9-0cb4-438f-867d-8174ba0e92d9"],
+Cell[5567, 162, 457, 11, 56, "Output",ExpressionUUID->"fea0cd95-7d6e-49f6-8862-a5b3078b8f87"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6061, 178, 452, 11, 52, "Input",ExpressionUUID->"b5053940-5eab-49b5-bc55-861de47a477a"],
+Cell[6516, 191, 461, 11, 56, "Output",ExpressionUUID->"c4e12bca-2934-4d2c-b6b4-cb9cf8be2e95"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7014, 207, 512, 11, 30, "Input",ExpressionUUID->"5dcf7492-6071-4b48-a166-151ad085575b"],
+Cell[7529, 220, 779, 18, 45, "Output",ExpressionUUID->"e2a0847c-c87c-4f46-af70-909454134378"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8345, 243, 468, 11, 30, "Input",ExpressionUUID->"81f79a09-1260-4d3d-858c-54ed0a9c2a89"],
+Cell[8816, 256, 485, 11, 56, "Output",ExpressionUUID->"d10f2c4f-da44-4f96-9a01-9e492635ad46"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9338, 272, 474, 11, 52, "Input",ExpressionUUID->"42f6f9ad-771c-4bb8-937f-4dc38774fc80"],
+Cell[9815, 285, 485, 11, 56, "Output",ExpressionUUID->"a6c82ca7-dfa9-43c8-ad5d-9640c3ae7477"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10337, 301, 461, 11, 30, "Input",ExpressionUUID->"f0e82e01-f77e-4a37-8dc3-49dab937fa10"],
+Cell[10801, 314, 1439, 30, 177, "Output",ExpressionUUID->"296d41f7-b2c9-4e9d-a494-e10bb8d536f4"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

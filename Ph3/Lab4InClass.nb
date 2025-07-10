@@ -1,0 +1,119 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3421,        109]
+NotebookOptionsPosition[      2891,         91]
+NotebookOutlinePosition[      3250,        107]
+CellTagsIndexPosition[      3207,        104]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0.05", ",", "40.805"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.10", ",", "40.997"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.17", ",", "41.283"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.25", ",", "41.647"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.38", ",", "42.187"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.48", ",", "42.588"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.55", ",", "42.863"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.63", ",", "43.197"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.72", ",", "43.511"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.77", ",", "43.707"}], "}"}]}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.765219762261668*^9, 
+  3.7652198739954767`*^9}},ExpressionUUID->"f3cb05f9-e08b-485c-af06-\
+332c0bb6d984"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"fit", "=", 
+  RowBox[{"LinearModelFit", "[", 
+   RowBox[{"data", ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "x"}], "}"}], ",", "x"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.76521987756073*^9, 
+  3.765219888155439*^9}},ExpressionUUID->"4c57ed43-7a56-46c5-bbc8-\
+3eef417fcffe"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"FittedModel", "[", 
+   TagBox[
+    PanelBox[
+     TagBox[
+      RowBox[{"40.61239990138066`", "\[VeryThinSpace]", "+", 
+       RowBox[{"4.063658777120349`", " ", "x"}]}],
+      Short[#, 2]& ],
+     FrameMargins->5],
+    Editable -> False], "]"}],
+  InterpretTemplate[
+  FittedModel[{
+    "Linear", {40.61239990138066, 
+     4.063658777120349}, {{$CellContext`x}, {1, $CellContext`x}}, {0, 0}}, {{
+    1., 1., 1., 1., 1., 1., 1., 1., 1., 1.}}, {{0.05, 40.805}, {0.1, 
+    40.997}, {0.17, 41.283}, {0.25, 41.647}, {0.38, 42.187}, {0.48, 42.588}, {
+    0.55, 42.863}, {0.63, 43.197}, {0.72, 43.511}, {0.77, 43.707}}, {{1., 
+    0.05}, {1., 0.1}, {1., 0.17}, {1., 0.25}, {1., 0.38}, {1., 0.48}, {1., 
+    0.55}, {1., 0.63}, {1., 0.72}, {1., 0.77}}, 
+    Function[Null, 
+     Internal`LocalizedBlock[{$CellContext`x}, #], {HoldAll}]]& ],
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->True]], "Output",
+ CellChangeTimes->{
+  3.765219888468123*^9},ExpressionUUID->"7135a205-1ef0-47e0-999c-\
+36ce66ccf9c3"]
+}, Open  ]]
+},
+WindowSize->{808, 683},
+WindowMargins->{{20, Automatic}, {Automatic, 44}},
+FrontEndVersion->"11.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 937, 27, 52, "Input",ExpressionUUID->"f3cb05f9-e08b-485c-af06-332c0bb6d984"],
+Cell[CellGroupData[{
+Cell[1520, 51, 305, 8, 30, "Input",ExpressionUUID->"4c57ed43-7a56-46c5-bbc8-3eef417fcffe"],
+Cell[1828, 61, 1047, 27, 78, "Output",ExpressionUUID->"7135a205-1ef0-47e0-999c-36ce66ccf9c3"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
