@@ -1,0 +1,89 @@
+-- [Problem 2.5a]
+PI[person_name](SIGMA[company_name = "First Bank Corporation"](works));
+
+-- [Problem 2.5b]
+PI[person_name, city](SIGMA[company_name = "First Bank Corporation"](works BOWTIE employee));
+
+
+-- [Problem 2.5c]
+satMoney <- PI[person_name](SIGMA[salary>10000 AND company_name = "First Bank Corporation"](works));
+employee BOWTIE satMoney;
+
+-- [Problem 2.5d]
+companyInfo <- works BOWTIE company;
+people <- SIGMA[companyInfo.person_name = employee.person_name AND
+  companyInfo.city = employee.city](employee TIMES companyInfo);
+PI[employee.person_name](people);
+
+-- [Problem 2.5e]
+citiesFind <- PI[city](SIGMA[company_name = "Small Bank Corporation"](company));
+company divide citiesFind;
+
+
+-- [Problem 2.6a]
+PI[customer.name, loan_number, amount, customer_city]((borrower BOWTIE customer) BOWTIE loan);
+
+--Jackson isn't included because he doesn't have an entry in the customer relation.
+
+
+-- [Problem 2.6b]
+-- I'd add a tuple for Jackson in the customer relation.
+
+
+-- [Problem 2.6c]
+PI[customer_name, loan_number, amount, customer_city]((borrower LBOWTIE customer) BOWTIE loan);
+
+
+-- [Problem 2.7a]
+works <- SIGMA[company_name != "First Bank Corporation"](works) UNION
+  PI[person_name, company_name, salary*1.10](SIGMA[company_name =
+  "First Bank Corporation"](works));
+
+
+-- [Problem 2.7b]
+managerNames <- PI[manager_name](manages);
+managers <- PI[person_name, company_name, salary](SIGMA[manager_name =
+  person_name](managerNames TIMES works));
+updatedManagers <- PI[person_name, company_name, salary*1.10](SIGMA[
+  salary*1.10 <= 100000](managers)) UNION PI[person_name, company_name,
+  salary*1.03](SIGMA[salary*1.10 > 100000](managers));
+works <- (works MINUS managers) UNION updatedManagers;
+
+
+-- [Problem 2.7c]
+works <- works MINUS SIGMA[company_name = "Small Bank Corporation"](works);
+
+
+-- [Problem 2.8a]
+userCounts <- [account_number]GROUP[count(customer_name) as user_count](
+  depositor);
+PI[account_number, branch_name, balance](SIGMA[user_count > 2](
+  userCounts BOWTIE account));
+
+-- [Problem 2.8b]
+twoUsers <- SIGMA[depositor.account_number = test.account_number](
+  depositor TIMES RHO[test](depositor));
+threeUsers <- PI[depositor.account_number](SIGMA[depositor.account_number =
+  account_number AND depositor.customer_name != customer_name AND
+  test.customer_name != customer_name](twoUsers TIMES RHO[test2](depositor)));
+PI[account_number, branch_name, balance](SIGMA[account.account_number =
+  threeUsers.account_number](account TIMES threeUsers));
+
+-- [Problem 2.9a]
+counts <- [company_name]GROUP[count(person_name) AS employees](works);
+smaller <- PI[counts.company_name](SIGMA[counts.employees < test.employees](
+  counts TIMES RHO[test](counts)));
+PI[company_name](works) MINUS smaller;
+
+-- [Problem 2.9b]
+payrolls <- [company_name]GROUP[sum(salary) AS total](works);
+larger <- PI[payrolls.company_name](SIGMA[payroll.total > test.total](
+  payrolls TIMES RHO[test](payrolls)));
+PI[company_name](works) MINUS larger;
+
+
+-- [Problem 2.9c]
+avgSalaries <- [company_name]GROUP[avg(salary) AS average](works);
+PI[avgSalaries.company_name](SIGMA[test.company_name = "First Bank Corporation" AND
+  avgSalaries.average > test.average](avgSalaries TIMES RHO[
+  test](avgSalaries)));

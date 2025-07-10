@@ -1,0 +1,68 @@
+-- [Problem 1a]
+-- Equivalent.
+-- Because the SIGMA operation uses only attributes from A and GROUP preserves
+-- all of the attributes in A, they function independently of each other.
+-- Therefore the order in which they occur doesn't matter and the two
+-- expressions are equivalent.
+
+-- [Problem 1b]
+-- Not Equivalent.
+-- Let r =
+{(1,2)};
+-- and let s =
+{(1,3)};
+-- and let our PI condition be that a = 1. Then we have:
+PI[a = 1](r MINUS s);
+-- which evaluates to
+{(1)};
+-- Versus
+PI[a = 1](r) MINUS PI[a = 1](s);
+-- which evaluates to an empty relation.
+-- Therefore these expressions are not equivalent.
+
+
+-- [Problem 1c]
+-- Not Equivalent.
+-- Let r =
+{(1, 10)};
+-- and let s =
+{(2, 20)};
+-- and let t =
+{(1, 30)};
+-- Then we have:
+(r LBOWTIE s) LBOWTIE t;
+-- which evaluates to:
+{(1, 10, null, 30)};
+-- Versus:
+r LBOWTIE (s LBOWTIE t);
+-- Which evaluates to:
+{(1, 10, null, null)};
+-- Therefore these expressions are not equivalent.
+
+
+-- [Problem 1d]
+-- Equivalent.
+-- The SIGMA operation will not affect the LBOWTIE operation and vice versa.
+-- Because theta uses only attributes from r, extra attributes added from the
+-- LBOWTIE with s won't affect the SIGMA function. Similarly, because the other
+-- operation is a LBOWTIE, when the LBOWTIE is applied first all tuples from r
+-- will be included for when SIGMA is applied afterwards. This means that the
+-- SIGMA operation will function the same as if it had been applied beforehand;
+-- the same tuples (and possible duplicates of them) will be removed. This means
+-- that the two expressions are equivalent.
+
+-- [Problem 1e]
+-- Not Equivalent.
+-- Counterexample:
+R_Schema = (a);
+S_Schema = (b);
+-- Let r =
+{(1)};
+-- Let s =
+{(2)};
+-- And let the condition for SIGMA be that b = 2. Then we have:
+SIGMA[b = 2](r LBOWTIE s);
+-- Which evaluates to an empty relation. Versus:
+r LBOWTIE SIGMA[b = 2](s);
+-- Which evaluates to {(1, null)}
+-- Therefore these are not equivalent.

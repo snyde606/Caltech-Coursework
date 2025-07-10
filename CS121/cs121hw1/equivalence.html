@@ -1,0 +1,192 @@
+<html><head>
+<style>
+div.answer {
+    padding-left: 20pt;
+    padding-bottom: 12pt;
+}
+
+div.comment {
+    padding-left: 4pt;
+    padding-bottom: 12pt;
+}
+
+div.errors {
+    border: 1px solid red;
+    margin-top: 12pt;
+    margin-left: 4pt;
+    padding-left: 4pt;
+    color: red;
+    font-weight: bold;
+}
+
+.relvar {
+    font-style: italic;
+}
+
+.attr_name {
+    font-style: italic;
+}
+
+.group_operator {
+    font-family: Lucida Calligraphy;
+}
+
+.func_name {
+    font-weight: bold;
+}
+
+.operator {
+}
+
+.string {
+    color: #007F00;
+}
+
+.number {
+    color: #0000FF;
+}
+
+</style>
+</head><body>
+<h1>File:  equivalence.txt</h1>
+<h2 id='Problem 1a'>Problem 1a</h2>
+<div class='comment'>
+Equivalent.
+Because the SIGMA operation uses only attributes from A and GROUP preserves
+all of the attributes in A, they function independently of each other.
+Therefore the order in which they occur doesn't matter and the two
+expressions are equivalent.
+</div>
+<h2 id='Problem 1b'>Problem 1b</h2>
+<div class='comment'>
+Not Equivalent.
+Let r =
+</div>
+<div class='answer'>
+{(<span class='number'>1</span>, <span class='number'>2</span>)}
+</div>
+<div class='comment'>
+and let s =
+</div>
+<div class='answer'>
+{(<span class='number'>1</span>, <span class='number'>3</span>)}
+</div>
+<div class='comment'>
+and let our PI condition be that a = 1. Then we have:
+</div>
+<div class='answer'>
+&Pi;<sub><span class='attr_name'>a</span> <span class='operator'>=</span> <span class='number'>1</span></sub>(<span class='relvar'>r</span> - <span class='relvar'>s</span>)
+</div>
+<div class='comment'>
+which evaluates to
+</div>
+<div class='answer'>
+{(<span class='number'>1</span>)}
+</div>
+<div class='comment'>
+Versus
+</div>
+<div class='answer'>
+&Pi;<sub><span class='attr_name'>a</span> <span class='operator'>=</span> <span class='number'>1</span></sub>(<span class='relvar'>r</span>) - &Pi;<sub><span class='attr_name'>a</span> <span class='operator'>=</span> <span class='number'>1</span></sub>(<span class='relvar'>s</span>)
+</div>
+<div class='comment'>
+which evaluates to an empty relation.
+Therefore these expressions are not equivalent.
+</div>
+<h2 id='Problem 1c'>Problem 1c</h2>
+<div class='comment'>
+Not Equivalent.
+Let r =
+</div>
+<div class='answer'>
+{(<span class='number'>1</span>, <span class='number'>10</span>)}
+</div>
+<div class='comment'>
+and let s =
+</div>
+<div class='answer'>
+{(<span class='number'>2</span>, <span class='number'>20</span>)}
+</div>
+<div class='comment'>
+and let t =
+</div>
+<div class='answer'>
+{(<span class='number'>1</span>, <span class='number'>30</span>)}
+</div>
+<div class='comment'>
+Then we have:
+</div>
+<div class='answer'>
+(<span class='relvar'>r</span> &#x27d5; <span class='relvar'>s</span>) &#x27d5; <span class='relvar'>t</span>
+</div>
+<div class='comment'>
+which evaluates to:
+</div>
+<div class='answer'>
+{(<span class='number'>1</span>, <span class='number'>10</span>, <span class='null'>null</span>, <span class='number'>30</span>)}
+</div>
+<div class='comment'>
+Versus:
+</div>
+<div class='answer'>
+<span class='relvar'>r</span> &#x27d5; (<span class='relvar'>s</span> &#x27d5; <span class='relvar'>t</span>)
+</div>
+<div class='comment'>
+Which evaluates to:
+</div>
+<div class='answer'>
+{(<span class='number'>1</span>, <span class='number'>10</span>, <span class='null'>null</span>, <span class='null'>null</span>)}
+</div>
+<div class='comment'>
+Therefore these expressions are not equivalent.
+</div>
+<h2 id='Problem 1d'>Problem 1d</h2>
+<div class='comment'>
+Equivalent.
+The SIGMA operation will not affect the LBOWTIE operation and vice versa.
+Because theta uses only attributes from r, extra attributes added from the
+LBOWTIE with s won't affect the SIGMA function. Similarly, because the other
+operation is a LBOWTIE, when the LBOWTIE is applied first all tuples from r
+will be included for when SIGMA is applied afterwards. This means that the
+SIGMA operation will function the same as if it had been applied beforehand;
+the same tuples (and possible duplicates of them) will be removed. This means
+that the two expressions are equivalent.
+</div>
+<h2 id='Problem 1e'>Problem 1e</h2>
+<div class='comment'>
+Not Equivalent.
+Counterexample:
+</div>
+<div class='answer'>
+<em>R_Schema</em> = (<em>a</em>)<br /><em>S_Schema</em> = (<em>b</em>)
+</div>
+<div class='comment'>
+Let r =
+</div>
+<div class='answer'>
+{(<span class='number'>1</span>)}
+</div>
+<div class='comment'>
+Let s =
+</div>
+<div class='answer'>
+{(<span class='number'>2</span>)}
+</div>
+<div class='comment'>
+And let the condition for SIGMA be that b = 2. Then we have:
+</div>
+<div class='answer'>
+&sigma;<sub><span class='attr_name'>b</span> <span class='operator'>=</span> <span class='number'>2</span></sub>(<span class='relvar'>r</span> &#x27d5; <span class='relvar'>s</span>)
+</div>
+<div class='comment'>
+Which evaluates to an empty relation. Versus:
+</div>
+<div class='answer'>
+<span class='relvar'>r</span> &#x27d5; &sigma;<sub><span class='attr_name'>b</span> <span class='operator'>=</span> <span class='number'>2</span></sub>(<span class='relvar'>s</span>)
+</div>
+<div class='comment'>
+Which evaluates to {(1, null)}
+Therefore these are not equivalent.
+</div>
+</body>
+</html>

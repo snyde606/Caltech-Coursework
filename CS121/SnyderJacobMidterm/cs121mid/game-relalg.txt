@@ -1,0 +1,54 @@
+-- [Problem 1]
+type_id_list <- PI[type_id](game_type);
+idlist <- PI[person_id]((game BOWTIE game_score) DIVIDE type_id_list);
+ans <- PI[person_id, person_name](geezer BOWTIE idlist);
+
+-- [Problem 2]
+ppl <- (PI[person_id, type_id](game_score RBOWTIE game)) RBOWTIE game_type;
+ans <- PI[type_id, type_name, counts](
+    [type_id]GROUP[count-distinct(person_id) as counts](ppl));
+
+
+-- [Problem 3]
+pinochle <- SIGMA[type_name = "pinochle"](game_type);
+pin_games <- game BOWTIE pinochle;
+game_score <- game_score MINUS (pin_games BOWTIE game_score);
+game <- game MINUS pin_games;
+game_type <- game_type MINUS pinochle;
+
+
+-- [Problem 4]
+tedcodd_games <- PI[game_id, person_id, score](
+    SIGMA[person_name = "Ted Codd"](game_score BOWTIE geezer));
+game_score <- (game_score MINUS tedcodd_games) UNION
+    PI[game_id, person_id, score + 30](tedcodd_games);
+
+
+-- [Problem 5]
+biggest_id <- GROUP[max(game_id) + 1](game);
+dominoes_id <- PI[type_id](SIGMA[type_name = "dominoes"](game_type));
+skeeter_id <- PI[person_id](SIGMA[person_name = "Skeeter Williams"](geezer));
+marcus_id <- PI[person_id](SIGMA[person_name = "Marcus Smith"](geezer));
+
+game <- game UNION biggest_id CROSS dominoes_id CROSS {("4/12/2000 3:30pm")};
+game_score <- game_score UNION biggest_id CROSS skeeter_id CROSS {(332)};
+game_score <- game_score UNION biggest_id CROSS marcus_id CROSS {(457)};
+
+-- [Problem 6]
+game_player_counts <- [game_id]GROUP[
+    game_id, count-distinct(person_id) as player_count](game_score);
+ans <- PI[game_id](
+    SIGMA[player_count < min_players or player_count > max_players
+        or player_count = 0](
+    game_player_counts BOWTIE game BOWTIE game_type
+));
+
+-- [Problem 7]
+joined_data <- game_score BOWTIE game BOWTIE game_type BOWTIE geezer;
+playgame_counts <- [person_id, person_name, type_id, type_name]GROUP[
+    person_id, person_name, type_id, type_name, count(score) as num_times](
+    joined_data
+    );
+ans <- [type_id]GROUP[
+    person_id, person_name, type_id, type_name, max(num_times)](
+    playgame_counts);

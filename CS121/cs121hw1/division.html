@@ -1,0 +1,143 @@
+<html><head>
+<style>
+div.answer {
+    padding-left: 20pt;
+    padding-bottom: 12pt;
+}
+
+div.comment {
+    padding-left: 4pt;
+    padding-bottom: 12pt;
+}
+
+div.errors {
+    border: 1px solid red;
+    margin-top: 12pt;
+    margin-left: 4pt;
+    padding-left: 4pt;
+    color: red;
+    font-weight: bold;
+}
+
+.relvar {
+    font-style: italic;
+}
+
+.attr_name {
+    font-style: italic;
+}
+
+.group_operator {
+    font-family: Lucida Calligraphy;
+}
+
+.func_name {
+    font-weight: bold;
+}
+
+.operator {
+}
+
+.string {
+    color: #007F00;
+}
+
+.number {
+    color: #0000FF;
+}
+
+</style>
+</head><body>
+<h1>File:  division.txt</h1>
+<h2 id='Problem 1a'>Problem 1a</h2>
+<div class='comment'>
+The expression
+</div>
+<div class='answer'>
+(&Pi;<sub><em>R</em> - <em>S</em></sub>(<span class='relvar'>r</span>) &times; <span class='relvar'>s</span>)
+</div>
+<div class='comment'>
+generates all possible combinations of r and s.
+However, given that tofu isn't included in s, combinations including tofu
+won't be included in the expression. Then when the expression
+</div>
+<div class='answer'>
+&Pi;<sub><em>R</em> - <em>S</em>, <em>S</em></sub>(<span class='relvar'>r</span>)
+</div>
+<div class='comment'>
+which represents the actual data in r (thus including the tofu entry) is
+used to take a set difference, the tofu is irrelevant since it's not
+included in the expression that's having its difference taken.
+So for the rest of the evaluation of the relational division operation,
+it's as if the tofu entry wasn't in the monkey_likes relation to begin with.
+So because Guenter has tuples with each of the food elements in monkey_foods,
+Guenter will appear in the result.
+</div>
+<h2 id='Problem 1b'>Problem 1b</h2>
+<div class='answer'>
+<span class='relvar'>r</span> &divide; <span class='relvar'>s</span> - (&Pi;<sub><em>R</em> - <em>S</em></sub>(<span class='relvar'>r</span> - &Pi;<sub><em>R</em> - <em>S</em></sub>(<span class='relvar'>r</span>) &times; <span class='relvar'>s</span>))
+</div>
+<div class='comment'>
+My definition works by identifying all of the "legal" tuples of R-S and S:
+</div>
+<div class='answer'>
+&Pi;<sub><em>R</em> - <em>S</em></sub>(<span class='relvar'>r</span>) &times; <span class='relvar'>s</span>
+</div>
+<div class='comment'>
+and then subtracting that from r to find all "illegal" tuples like the tofu:
+</div>
+<div class='answer'>
+(<span class='relvar'>r</span> - &Pi;<sub><em>R</em> - <em>S</em></sub>(<span class='relvar'>r</span>) &times; <span class='relvar'>s</span>)
+</div>
+<div class='comment'>
+and then using the project operation to identify all of the false positives
+left over from the original definition of relational division:
+</div>
+<div class='answer'>
+(&Pi;<sub><em>R</em> - <em>S</em></sub>(<span class='relvar'>r</span> - &Pi;<sub><em>R</em> - <em>S</em></sub>(<span class='relvar'>r</span>) &times; <span class='relvar'>s</span>))
+</div>
+<div class='comment'>
+And then subtracting that from the original definition of relational division
+to remove all of the false positives and be left with the exact division:
+</div>
+<div class='answer'>
+<span class='relvar'>r</span> &divide; <span class='relvar'>s</span> - (&Pi;<sub><em>R</em> - <em>S</em></sub>(<span class='relvar'>r</span> - &Pi;<sub><em>R</em> - <em>S</em></sub>(<span class='relvar'>r</span>) &times; <span class='relvar'>s</span>))
+</div>
+<h2 id='Problem 1c'>Problem 1c</h2>
+<div class='comment'>
+IMPORTANT NOTE - it looks like ra2html.pyz doesn't allow for the arguments
+of aggregate functions like count() to be uppercase (since they're supposed
+to be attribute names which are supposed to be lowercase) so in those cases
+I'm going to use sAttribs instead of S and rAttribs instead of R. Sorry for
+the confusion but I don't think ra2html.pyz will accept this code otherwise.
+
+It also appears that GROUP won't allow for an expression involving MINUS
+in the [ ] block before it. So I'm going to use rMinusS to represent
+R MINUS S.
+</div>
+<div class='answer'>
+&Pi;<sub><em>R</em> - <em>S</em></sub>(&sigma;<sub><span class='attr_name'>s2</span> <span class='operator'>=</span> <span class='attr_name'>s3</span></sub>(<sub><span class='attr_name'>rMinusS</span></sub><span class='group_operator'>G</span><sub><span class='func_name'>count</span>(<span class='attr_name'>sAttribs</span>) <b>as</b> <em>s2</em></sub>(<span class='relvar'>r</span> &bowtie; <span class='relvar'>s</span>) &times; <sub></sub><span class='group_operator'>G</span><sub><span class='func_name'>count</span>(<span class='attr_name'>sAttribs</span>) <b>as</b> <em>s3</em></sub>(<span class='relvar'>s</span>)))
+</div>
+<div class='comment'>
+First we count the number of tuples with values for S that match the values
+in s:
+</div>
+<div class='answer'>
+<sub><span class='attr_name'>rMinusS</span></sub><span class='group_operator'>G</span><sub><span class='func_name'>count</span>(<span class='attr_name'>sAttribs</span>) <b>as</b> <em>s2</em></sub>(<span class='relvar'>r</span> &bowtie; <span class='relvar'>s</span>)
+</div>
+<div class='comment'>
+Then we match each tuple with the "correct" number of tuples it should have,
+based on s:
+</div>
+<div class='answer'>
+<sub><span class='attr_name'>rMinusS</span></sub><span class='group_operator'>G</span><sub><span class='func_name'>count</span>(<span class='attr_name'>sAttribs</span>) <b>as</b> <em>s2</em></sub>(<span class='relvar'>r</span> &bowtie; <span class='relvar'>s</span>) &times; <sub></sub><span class='group_operator'>G</span><sub><span class='func_name'>count</span>(<span class='attr_name'>sAttribs</span>) <b>as</b> <em>s3</em></sub>(<span class='relvar'>s</span>)
+</div>
+<div class='comment'>
+Then we keep only the names that have equal numbers of expected tuples and
+actual tuples:
+</div>
+<div class='answer'>
+&Pi;<sub><em>R</em> - <em>S</em></sub>(&sigma;<sub><span class='attr_name'>s2</span> <span class='operator'>=</span> <span class='attr_name'>s3</span></sub>(<sub><span class='attr_name'>rMinusS</span></sub><span class='group_operator'>G</span><sub><span class='func_name'>count</span>(<span class='attr_name'>sAttribs</span>) <b>as</b> <em>s2</em></sub>(<span class='relvar'>r</span> &bowtie; <span class='relvar'>s</span>) &times; <sub></sub><span class='group_operator'>G</span><sub><span class='func_name'>count</span>(<span class='attr_name'>sAttribs</span>) <b>as</b> <em>s3</em></sub>(<span class='relvar'>s</span>)))
+</div>
+</body>
+</html>

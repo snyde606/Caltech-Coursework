@@ -1,0 +1,49 @@
+Write the relational model schema for your airline database in this file, using
+the notation we have used all term.  You can indicate primary key columns by
+enclosing the attribute names in _ characters.  Include descriptions of other
+candidate keys or foreign keys (if any) immediately under each relation schema.
+Example:
+
+foo(_a_, b, c)
+ * b is also a candidate key
+ * c is a foreign key to bar.c
+------------------------------------------------------------------------------
+
+-- [Problem 4]
+
+customer(_cust_ID_, first_name, last_name, email_address)
+
+customer_phone_numbers(_cust_ID_, _phone_number_)
+ * cust_id is a foreign key to customer.cust_ID
+
+traveler(_cust_ID_, passport_number, country_of_citizenship, emergency_contact, emerg_phone_number, frq_fly_num)
+ * cust_ID is a foreign key to customer.cust_ID
+
+purchaser(_cust_ID_, card_number, expiration_date, verification_code)
+ * cust_ID is a foreign key to customer.cust_ID
+
+purchase(_purchase_ID_, cust_ID, timestamp, confirmation_number)
+ * The transaction schema was combined with this schema in order to enforce total participation
+ * cust_id is a foreign key to purchaser.cust_ID
+ * confirmation_number is also a candidate key
+
+ticket(_ticket_ID_, cust_ID, purchase_ID, sale_price)
+ * The purchase_tickets and traveler_tickets schemas were combined with this schema in order to enforce total participation
+ * cust_ID is a foreign key to traveler.cust_ID
+ * purchase_ID is a foreign key to purchase.purchase_ID
+
+flight(_flight_number_, _date_, type_code, time, source_airport, dest_airport, domestic)
+ * The plane_assign schema was combined with this schema in order to enforce total participation
+ * type_code is a foreign key to airplane.type_code
+
+airplane(_type_code_, company, model)
+
+seat(_type_code_, _number_, class, type, exit_row)
+ * type_code is a foreign key to airplane.type_code
+
+ticket_unique(_flight_number_, _date_, _type_code_, _number_, ticket_ID)
+ * flight_number is a foreign key to flight.flight_number
+ * date is a foreign key to flight.date
+ * type_code is a foreign key to airplane.type_code
+ * number is a foreign key to seat.number
+ * ticket_ID is also a candidate key
